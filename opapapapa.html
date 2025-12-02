@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Interativo de Lógica de Programação com JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .code-example {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .code-example .keyword {
+            color: #c678dd;
+        }
+
+        .code-example .string {
+            color: #98c379;
+        }
+
+        .code-example .number {
+            color: #d19a66;
+        }
+
+        .code-example .comment {
+            color: #5c6370;
+        }
+
+        .interactive {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196F3;
+        }
+
+        .interactive h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+
+        input, select, button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .result {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            min-height: 50px;
+            font-weight: bold;
+        }
+
+        .result.success {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .list-item {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 Guia Interativo de Lógica de Programação</h1>
+        <p>Aprenda JavaScript na prática com exemplos interativos</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section">
+            <h2>1. Variáveis e Tipos de Dados</h2>
+            <div class="explanation">
+                <p><strong>Variáveis</strong> são espaços na memória onde armazenamos informações. Em JavaScript, temos diferentes tipos de dados: <strong>string</strong> (texto), <strong>number</strong> (números), <strong>boolean</strong> (verdadeiro/falso), entre outros.</p>
+            </div>
+            <div class="code-example">
+<span class="comment">// Declarando variáveis</span>
+<span class="keyword">let</span> nome = <span class="string">"João"</span>;  <span class="comment">// String (texto)</span>
+<span class="keyword">let</span> idade = <span class="number">25</span>;      <span class="comment">// Number (número)</span>
+<span class="keyword">let</span> ativo = <span class="keyword">true</span>;   <span class="comment">// Boolean (verdadeiro/falso)</span>
+<span class="keyword">const</span> PI = <span class="number">3.14</span>;    <span class="comment">// Constante (não muda)</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Experimente:</h3>
+                <input type="text" id="varNome" placeholder="Digite seu nome">
+                <input type="number" id="varIdade" placeholder="Digite sua idade">
+                <button onclick="testarVariaveis()">Criar Variáveis</button>
+                <div id="resultVar" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>2. Arrays (Listas)</h2>
+            <div class="explanation">
+                <p><strong>Arrays</strong> são listas que armazenam múltiplos valores em uma única variável. Cada item tem uma posição (índice) começando do 0.</p>
+            </div>
+            <div class="code-example">
+<span class="comment">// Criando um array</span>
+<span class="keyword">let</span> frutas = [<span class="string">"Maçã"</span>, <span class="string">"Banana"</span>, <span class="string">"Laranja"</span>];
+console.log(frutas[<span class="number">0</span>]); <span class="comment">// Maçã (primeiro item)</span>
+frutas.push(<span class="string">"Uva"</span>);     <span class="comment">// Adiciona no final</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Experimente:</h3>
+                <input type="text" id="arrayItem" placeholder="Digite uma fruta">
+                <button onclick="adicionarArray()">Adicionar à Lista</button>
+                <button onclick="limparArray()">Limpar Lista</button>
+                <div id="resultArray" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>3. Operadores Matemáticos</h2>
+            <div class="explanation">
+                <p>Operadores matemáticos realizam cálculos: <strong>+</strong> (adição), <strong>-</strong> (subtração), <strong>*</strong> (multiplicação), <strong>/</strong> (divisão), <strong>%</strong> (resto da divisão).</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> a = <span class="number">10</span>;
+<span class="keyword">let</span> b = <span class="number">3</span>;
+console.log(a + b);  <span class="comment">// 13 (soma)</span>
+console.log(a - b);  <span class="comment">// 7 (subtração)</span>
+console.log(a * b);  <span class="comment">// 30 (multiplicação)</span>
+console.log(a / b);  <span class="comment">// 3.33... (divisão)</span>
+console.log(a % b);  <span class="comment">// 1 (resto)</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Calculadora:</h3>
+                <input type="number" id="num1" placeholder="Número 1" value="10">
+                <select id="operador">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">×</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                </select>
+                <input type="number" id="num2" placeholder="Número 2" value="3">
+                <button onclick="calcular()">Calcular</button>
+                <div id="resultCalc" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>4. Operadores Relacionais</h2>
+            <div class="explanation">
+                <p>Comparam valores e retornam <strong>true</strong> ou <strong>false</strong>: <strong>==</strong> (igual), <strong>!=</strong> (diferente), <strong>&gt;</strong> (maior), <strong>&lt;</strong> (menor), <strong>&gt;=</strong> (maior ou igual), <strong>&lt;=</strong> (menor ou igual).</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> x = <span class="number">5</span>;
+<span class="keyword">let</span> y = <span class="number">10</span>;
+console.log(x == y);   <span class="comment">// false</span>
+console.log(x &lt; y);    <span class="comment">// true</span>
+console.log(x &gt;= <span class="number">5</span>);  <span class="comment">// true</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Comparador:</h3>
+                <input type="number" id="comp1" placeholder="Valor 1" value="5">
+                <select id="comparador">
+                    <option value="==">==</option>
+                    <option value="!=">!=</option>
+                    <option value=">">&gt;</option>
+                    <option value="<">&lt;</option>
+                    <option value=">=">&gt;=</option>
+                    <option value="<=">&lt;=</option>
+                </select>
+                <input type="number" id="comp2" placeholder="Valor 2" value="10">
+                <button onclick="comparar()">Comparar</button>
+                <div id="resultComp" class="result"></div>
+            </div>
+        </div>
+
+       
+        <div class="section">
+            <h2>5. Operadores Lógicos</h2>
+            <div class="explanation">
+                <p>Combinam condições: <strong>&&</strong> (E - ambas verdadeiras), <strong>||</strong> (OU - pelo menos uma verdadeira), <strong>!</strong> (NÃO - inverte o valor).</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> temCNH = <span class="keyword">true</span>;
+<span class="keyword">let</span> maiorIdade = <span class="keyword">true</span>;
+console.log(temCNH && maiorIdade);  <span class="comment">// true (ambas são true)</span>
+console.log(temCNH || <span class="keyword">false</span>);       <span class="comment">// true (uma é true)</span>
+console.log(!temCNH);               <span class="comment">// false (inverte)</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Sistema de Acesso:</h3>
+                <label><input type="checkbox" id="checkCNH"> Tem CNH?</label><br>
+                <label><input type="checkbox" id="checkIdade"> É maior de idade?</label><br>
+                <button onclick="verificarAcesso()">Verificar Permissão para Dirigir</button>
+                <div id="resultLogico" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>6. Estrutura Condicional IF/Else</h2>
+            <div class="explanation">
+                <p>Executa código baseado em condições. <strong>if</strong> executa se a condição for verdadeira, <strong>else</strong> executa se for falsa.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> idade = <span class="number">18</span>;
+<span class="keyword">if</span> (idade &gt;= <span class="number">18</span>) {
+    console.log(<span class="string">"Maior de idade"</span>);
+} <span class="keyword">else</span> {
+    console.log(<span class="string">"Menor de idade"</span>);
+}
+            </div>
+            <div class="interactive">
+                <h3>💡 Verificador de Idade:</h3>
+                <input type="number" id="idadeIf" placeholder="Digite sua idade" value="18">
+                <button onclick="verificarIdade()">Verificar</button>
+                <div id="resultIf" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>7. Estrutura de Seleção Switch/Case</h2>
+            <div class="explanation">
+                <p>Compara um valor com múltiplas opções. É útil quando há várias condições possíveis para verificar.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> dia = <span class="number">1</span>;
+<span class="keyword">switch</span>(dia) {
+    <span class="keyword">case</span> <span class="number">1</span>:
+        console.log(<span class="string">"Domingo"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">2</span>:
+        console.log(<span class="string">"Segunda"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        console.log(<span class="string">"Outro dia"</span>);
+}
+            </div>
+            <div class="interactive">
+                <h3>💡 Dias da Semana:</h3>
+                <select id="diaSelect">
+                    <option value="1">1 - Domingo</option>
+                    <option value="2">2 - Segunda</option>
+                    <option value="3">3 - Terça</option>
+                    <option value="4">4 - Quarta</option>
+                    <option value="5">5 - Quinta</option>
+                    <option value="6">6 - Sexta</option>
+                    <option value="7">7 - Sábado</option>
+                </select>
+                <button onclick="verificarDia()">Ver Dia</button>
+                <div id="resultSwitch" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>8. Estrutura de Repetição While</h2>
+            <div class="explanation">
+                <p>Repete um bloco de código <strong>enquanto</strong> uma condição for verdadeira. Verifica a condição antes de executar.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> contador = <span class="number">1</span>;
+<span class="keyword">while</span> (contador &lt;= <span class="number">5</span>) {
+    console.log(<span class="string">"Contagem: "</span> + contador);
+    contador++;
+}
+            </div>
+            <div class="interactive">
+                <h3>💡 Contador While:</h3>
+                <input type="number" id="whileLimit" placeholder="Contar até..." value="5">
+                <button onclick="executarWhile()">Executar While</button>
+                <div id="resultWhile" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>9. Estrutura de Repetição For</h2>
+            <div class="explanation">
+                <p>Repete um bloco de código um número específico de vezes. Ideal quando sabemos quantas repetições queremos.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+    console.log(<span class="string">"Iteração: "</span> + i);
+}
+            </div>
+            <div class="interactive">
+                <h3>💡 Tabuada:</h3>
+                <input type="number" id="tabuada" placeholder="Número" value="5">
+                <button onclick="gerarTabuada()">Gerar Tabuada</button>
+                <div id="resultFor" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>10. Estrutura de Repetição Do While</h2>
+            <div class="explanation">
+                <p>Similar ao While, mas executa o código <strong>pelo menos uma vez</strong> antes de verificar a condição.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> numero = <span class="number">1</span>;
+<span class="keyword">do</span> {
+    console.log(<span class="string">"Número: "</span> + numero);
+    numero++;
+} <span class="keyword">while</span> (numero &lt;= <span class="number">3</span>);
+            </div>
+            <div class="interactive">
+                <h3>💡 Jogo de Adivinhação:</h3>
+                <input type="number" id="palpite" placeholder="Adivinhe (1-10)" min="1" max="10">
+                <button onclick="adivinhar()">Tentar</button>
+                <button onclick="resetarJogo()">Novo Jogo</button>
+                <div id="resultDoWhile" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>11. Estrutura de Repetição ForEach</h2>
+            <div class="explanation">
+                <p>Percorre cada elemento de um array executando uma função para cada item.</p>
+            </div>
+            <div class="code-example">
+<span class="keyword">let</span> frutas = [<span class="string">"Maçã"</span>, <span class="string">"Banana"</span>, <span class="string">"Laranja"</span>];
+frutas.forEach(<span class="keyword">function</span>(fruta, indice) {
+    console.log(indice + <span class="string">": "</span> + fruta);
+});
+            </div>
+            <div class="interactive">
+                <h3>💡 Lista de Tarefas:</h3>
+                <input type="text" id="tarefa" placeholder="Digite uma tarefa">
+                <button onclick="adicionarTarefa()">Adicionar</button>
+                <button onclick="listarTarefas()">Listar Todas</button>
+                <div id="resultForEach" class="result"></div>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>12. Funções em JavaScript</h2>
+            <div class="explanation">
+                <p><strong>Funções</strong> são blocos de código reutilizáveis que executam uma tarefa específica. Podem receber parâmetros e retornar valores.</p>
+            </div>
+            <div class="code-example">
+<span class="comment">// Declarando uma função</span>
+<span class="keyword">function</span> somar(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Chamando a função</span>
+<span class="keyword">let</span> resultado = somar(<span class="number">5</span>, <span class="number">3</span>);
+console.log(resultado); <span class="comment">// 8</span>
+            </div>
+            <div class="interactive">
+                <h3>💡 Calculadora de IMC:</h3>
+                <input type="number" id="peso" placeholder="Peso (kg)" step="0.1" value="70">
+                <input type="number" id="altura" placeholder="Altura (m)" step="0.01" value="1.75">
+                <button onclick="calcularIMC()">Calcular IMC</button>
+                <div id="resultFunc" class="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function testarVariaveis() {
+            let nome = document.getElementById('varNome').value;
+            let idade = document.getElementById('varIdade').value;
+            let resultado = document.getElementById('resultVar');
+            
+            if (nome && idade) {
+                let tipo1 = typeof nome;
+                let tipo2 = typeof Number(idade);
+                resultado.className = 'result success';
+                resultado.innerHTML = `
+                    <strong>Variáveis criadas:</strong><br>
+                    nome = "${nome}" (tipo: ${tipo1})<br>
+                    idade = ${idade} (tipo: ${tipo2})
+                `;
+            } else {
+                resultado.className = 'result error';
+                resultado.innerHTML = 'Por favor, preencha todos os campos!';
+            }
+        }
+
+        
+        let minhaLista = [];
+        function adicionarArray() {
+            let item = document.getElementById('arrayItem').value;
+            let resultado = document.getElementById('resultArray');
+            
+            if (item) {
+                minhaLista.push(item);
+                resultado.className = 'result success';
+                resultado.innerHTML = `<strong>Lista atual:</strong><br>` + 
+                    minhaLista.map((f, i) => `${i}: ${f}`).join('<br>');
+                document.getElementById('arrayItem').value = '';
+            } else {
+                resultado.className = 'result error';
+                resultado.innerHTML = 'Digite um item!';
+            }
+        }
+
+        function limparArray() {
+            minhaLista = [];
+            document.getElementById('resultArray').innerHTML = 'Lista limpa!';
+        }
+
+        
+        function calcular() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let op = document.getElementById('operador').value;
+            let resultado = document.getElementById('resultCalc');
+            let res;
+
+            switch(op) {
+                case '+': res = num1 + num2; break;
+                case '-': res = num1 - num2; break;
+                case '*': res = num1 * num2; break;
+                case '/': res = num2 !== 0 ? num1 / num2 : 'Erro: divisão por zero'; break;
+                case '%': res = num1 % num2; break;
+            }
+
+            resultado.className = 'result success';
+            resultado.innerHTML = `<strong>Resultado:</strong> ${num1} ${op} ${num2} = ${res}`;
+        }
+
+        
+        function comparar() {
+            let val1 = parseFloat(document.getElementById('comp1').value);
+            let val2 = parseFloat(document.getElementById('comp2').value);
+            let comp = document.getElementById('comparador').value;
+            let resultado = document.getElementById('resultComp');
+            let res;
+
+            switch(comp) {
+                case '==': res = val1 == val2; break;
+                case '!=': res = val1 != val2; break;
+                case '>': res = val1 > val2; break;
+                case '<': res = val1 < val2; break;
+                case '>=': res = val1 >= val2; break;
+                case '<=': res = val1 <= val2; break;
+            }
+
+            resultado.className = res ? 'result success' : 'result error';
+            resultado.innerHTML = `<strong>${val1} ${comp} ${val2}</strong> é <strong>${res ? 'VERDADEIRO' : 'FALSO'}</strong>`;
+        }
+
+        
+        function verificarAcesso() {
+            let temCNH = document.getElementById('checkCNH').checked;
+            let maiorIdade = document.getElementById('checkIdade').checked;
+            let resultado = document.getElementById('resultLogico');
+            
+            let podeDigirir = temCNH && maiorIdade;
+            
+            resultado.className = podeDigirir ? 'result success' : 'result error';
+            resultado.innerHTML = `
+                <strong>Tem CNH:</strong> ${temCNH}<br>
+                <strong>Maior de idade:</strong> ${maiorIdade}<br>
+                <strong>Pode dirigir:</strong> ${podeDigirir ? '✅ SIM' : '❌ NÃO'}
+            `;
+        }
+
+        
+        function verificarIdade() {
+            let idade = parseInt(document.getElementById('idadeIf').value);
+            let resultado = document.getElementById('resultIf');
+            
+            if (idade >= 18) {
+                resultado.className = 'result success';
+                resultado.innerHTML = `<strong>Idade ${idade}:</strong> Você é maior de idade! ✅`;
+            } else if (idade > 0) {
+                resultado.className = 'result error';
+                resultado.innerHTML = `<strong>Idade ${idade}:</strong> Você é menor de idade! ❌`;
+            } else {
+                resultado.className = 'result error';
+                resultado.innerHTML = 'Digite uma idade válida!';
+            }
+        }
+
+        
+        function verificarDia() {
+            let dia = parseInt(document.getElementById('diaSelect').value);
+            let resultado = document.getElementById('resultSwitch');
+            let nomeDia;
+            
+            switch(dia) {
+                case 1: nomeDia = 'Domingo'; break;
+                case 2: nomeDia = 'Segunda-feira'; break;
+                case 3: nomeDia = 'Terça-feira'; break;
+                case 4: nomeDia = 'Quarta-feira'; break;
+                case 5: nomeDia = 'Quinta-feira'; break;
+                case 6: nomeDia = 'Sexta-feira'; break;
+                case 7: nomeDia = 'Sábado'; break;
+                default: nomeDia = 'Dia inválido';
+            }
+            
+            resultado.className = 'result success';
+            resultado.innerHTML = `<strong>Dia ${dia}:</strong> ${nomeDia}`;
+        }
+
+        
+        function executarWhile() {
+            let limite = parseInt(document.getElementById('whileLimit').value);
+            let resultado = document.getElementById('resultWhile');
+            let saida = '';
+            let contador = 1;
+            
+            while (contador <= limite) {
+                saida += `<div class="list-item">Contagem: ${contador}</div>`;
+                contador++;
+            }
+            
+            resultado.className = 'result success';
+            resultado.innerHTML = `<strong>Resultado do While:</strong><br>${saida}`;
+        }
+
+        
+        function gerarTabuada() {
+            let num = parseInt(document.getElementById('tabuada').value);
+            let resultado = document.getElementById('resultFor');
+            let saida = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                saida += `<div class="list-item">${num} × ${i} = ${num * i}</div>`;
+            }
+            
+            resultado.className = 'result success';
+            resultado.innerHTML = `<strong>Tabuada do ${num}:</strong><br>${saida}`;
+        }
+
+        
+        let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+        let tentativas = 0;
+
+        function adivinhar() {}
+            let palpite = parseInt(document.getElementById('palpite').value);
+            let resultado = document.getElementById('resultDoWhile');
+            tentativas++;
